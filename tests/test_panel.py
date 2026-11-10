@@ -55,6 +55,18 @@ class Diagnosis(unittest.TestCase):
         text = '{"result": "boom", "credential_expires_at": "2030-01-01"}\n--- stderr\nsomething odd'
         self.assertIn("unrecognised", self.diagnose(text, "claude"))
 
+    def test_the_hosted_providers_bad_key_replies_are_recognised(self):
+        # The replies DeepSeek, Kimi, Qwen and OpenRouter gave to a request with no key, 10 Nov 2026.
+        for reply in ("HTTP 403: Authentication Fails (governor)",
+                      'HTTP 403: {"error":{"message":"Incorrect API key provided"}}',
+                      "HTTP 403: You didn't provide an API key.",
+                      "HTTP 403: No cookie auth credentials found"):
+            with tempfile.TemporaryDirectory() as d:
+                raw = Path(d) / "x.raw.txt"
+                raw.write_text("--- stderr\n" + reply)
+                why = panel.diagnose("deepseek", raw, {"cmd": "api", "model": "m", "key_env": "MY_KEY"})
+            self.assertIn("MY_KEY", why, reply)
+
     def test_a_real_sign_in_error_says_how_to_sign_in(self):
         self.assertIn("codex login", self.diagnose("Error: not logged in. Please log in."))
 

@@ -190,8 +190,10 @@ Things worth knowing before you seat five judges:
   the rest. Fine as a fourth opinion, weak as one of three.
 - **What has actually been run:** the three built-ins, `vibe` and `muse` on real documents; the
   `api` type against a local Ollama model in a real round; the `command` type with opencode up to
-  its free-tier limit. DeepSeek's, Kimi's and Qwen's own endpoints have not been called by the
-  author: they follow the same protocol, and a report of what happens on yours is welcome.
+  its free-tier limit. DeepSeek's, Kimi's, Qwen's and OpenRouter's endpoints were reached at the
+  addresses in the examples file and answered "no key" as expected (10 Nov 2026), so the addresses
+  and paths are right. A full review through them has not been run by the author, who has no keys
+  for them: a report of what happens on yours is welcome.
 
 ## Not only papers
 

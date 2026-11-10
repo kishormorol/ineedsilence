@@ -700,7 +700,8 @@ def diagnose(judge: str, raw_path: Path, conf: dict) -> str:
     if re.search(r"quota|rate.?limit|usage limit|too many requests|\b429\b|limit reached|out of credits|insufficient balance|insufficient_quota|http 402|exceeded", tail):
         return "the subscription's usage limit was hit: wait for it to reset, then rerun this judge"
     if re.search(r"unauthori[sz]ed|\b401\b|not (logged|signed) in|please (log|sign) ?in|login required|"
-                 r"authentication (failed|required|error)|invalid api key|expired token|no credentials", tail):
+                 r"authentication (fail\w*|required|error)|(invalid|incorrect|missing) api key|provide (an|your) api key|"
+                 r"http 40[13]\b|expired token|no (cookie auth )?credentials", tail):
         how = (f"set the environment variable {conf.get('key_env', '<key_env>')}" if conf["cmd"] == "api"
                else LOGIN.get(conf["cmd"], f"sign in to {binary(conf)}"))
         return f"not signed in: {how}"
