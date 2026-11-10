@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.DS_Store
+# Yours, not the project's: records of your own runs.
+lessons.jsonl
+LESSONS.md
+*.silence/

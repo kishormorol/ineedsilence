@@ -1,0 +1,63 @@
+{
+ "_comment": "Examples of extra judges. Copy the ones you want into the \"judges\" list of judges.json. Base URLs and model names change: check each provider's documentation. Keys are read from the environment variable named in key_env and are never stored here.",
+ "judges": [
+  {
+   "name": "deepseek",
+   "type": "api",
+   "base_url": "https://api.deepseek.com",
+   "model": "<a DeepSeek model id>",
+   "key_env": "DEEPSEEK_API_KEY",
+   "label": "DeepSeek"
+  },
+  {
+   "name": "kimi",
+   "type": "api",
+   "base_url": "https://api.moonshot.ai/v1",
+   "model": "<a Kimi model id>",
+   "key_env": "MOONSHOT_API_KEY",
+   "label": "Kimi (Moonshot)"
+  },
+  {
+   "name": "qwen",
+   "type": "api",
+   "base_url": "https://dashscope-intl.aliyuncs.com/compatible-mode/v1",
+   "model": "<a Qwen model id>",
+   "key_env": "DASHSCOPE_API_KEY",
+   "label": "Qwen (DashScope)"
+  },
+  {
+   "name": "openrouter",
+   "type": "api",
+   "base_url": "https://openrouter.ai/api/v1",
+   "model": "<vendor/model>",
+   "key_env": "OPENROUTER_API_KEY",
+   "label": "OpenRouter"
+  },
+  {
+   "name": "local",
+   "type": "api",
+   "base_url": "http://localhost:11434/v1",
+   "model": "qwen2.5:3b",
+   "json_mode": true,
+   "max_chars": 60000,
+   "label": "Local model (Ollama)",
+   "fallback": false
+  },
+  {
+   "name": "opencode",
+   "type": "command",
+   "run": [
+    "opencode",
+    "run",
+    "-m",
+    "{model}",
+    "--file",
+    "{prompt_file}",
+    "Follow the instructions in the attached file and reply with the JSON object only."
+   ],
+   "model": "<provider/model>",
+   "label": "opencode",
+   "fallback": false
+  }
+ ]
+}

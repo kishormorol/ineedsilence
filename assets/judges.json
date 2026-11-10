@@ -1,0 +1,54 @@
+{
+ "judges": [
+  {
+   "name": "claude",
+   "type": "claude",
+   "model": "claude-fable-5-2",
+   "effort": "high",
+   "label": "Claude Fable 5.2",
+   "fallback": false
+  },
+  {
+   "name": "gpt",
+   "type": "codex",
+   "model": "gpt-6-astra",
+   "effort": "high",
+   "label": "GPT-6 Astra (Codex)",
+   "alternates": [
+    {
+     "model": "gpt-6.1-sol",
+     "label": "GPT-6.1 Sol (Codex)"
+    }
+   ]
+  },
+  {
+   "name": "gemini",
+   "type": "agy",
+   "model": "gemini-4-argon-high",
+   "effort": "high",
+   "label": "Gemini 4 Argon (Antigravity)",
+   "alternates": [
+    {
+     "model": "gemini-3.8-flash-high",
+     "label": "Gemini 3.8 Flash (Antigravity)"
+    }
+   ]
+  }
+ ],
+ "fallbacks": [
+  {
+   "name": "vibe",
+   "type": "vibe",
+   "model": "",
+   "effort": "high",
+   "label": "Mistral (Vibe)"
+  },
+  {
+   "name": "muse",
+   "type": "muse",
+   "model": "",
+   "effort": "high",
+   "label": "Meta (Muse)"
+  }
+ ]
+}
